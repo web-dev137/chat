@@ -13,14 +13,16 @@ int main(int argc,const char **argv) {
         return false;
     }
 
-    std::unique_ptr<Client> c = std::make_unique<Client>();
+    int port = std::stoi(argv[1]);
+
+    std::unique_ptr<Client> c = std::make_unique<Client>(port);
     
-     if(argc != 2) {
-        std::cerr<<"Name not given"<<endl;
+     if(argc != 3) {
+        std::cerr<<"Not all parameters are given"<<endl;
         exit(0);
     }
 
-    name = "["+string(argv[1])+"]";
+    name = "["+string(argv[2])+"]";
     // sending connection request
     SOCKET connectStatus = c->connectClient();
     if(!connectStatus) {

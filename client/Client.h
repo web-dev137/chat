@@ -7,7 +7,7 @@
 
 class Client {
 public:
-    Client();
+    Client(int port);
     bool connectClient();
     void sendMsg(std::string msg);
     std::string formattingMsg(std::string name,std::string msg);

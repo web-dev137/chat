@@ -53,9 +53,6 @@ void TCP::bind() {
     int bindFlag = ::bind(sock,(struct sockaddr*)&serverAddress,sizeof(sockaddr_in));
 
     if(bindFlag == SOCKET_ERROR) {
-        if(onDisconnect) {
-            onDisconnect(clientSocket);
-        }
         closesocket(sock);
         throw std::runtime_error("Failed bind params");
     }

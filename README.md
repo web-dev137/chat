@@ -28,7 +28,7 @@ For  run server:
 
 For connect client:
 
-    ./client.exe <client_name>
+    ./client.exe <port> <client_name>
 
 ## Planned
     - Chat rooms

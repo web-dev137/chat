@@ -1,8 +1,8 @@
 #include "Client.h"
 
-Client::Client(){
+Client::Client(int port){
     serverAddress.sin_family = AF_INET;
-    serverAddress.sin_port = htons(5000);
+    serverAddress.sin_port = htons(port);
     inet_pton(AF_INET,this->BASE_IP,&serverAddress.sin_addr);
 }
 

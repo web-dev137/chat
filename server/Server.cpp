@@ -57,6 +57,9 @@ void Server::handleRecive(int clientSocket,const std::string& buff) {
  */
 std::string Server::parseClientName(std::string clientBuff) {
     int posEndName = clientBuff.find_first_of(":");
+    if(posEndName == std::string::npos) {
+        throw std::invalid_argument("Invalid message format");
+    }
     std::string clientName = clientBuff.substr(0,posEndName);
     return clientName;
 }
@@ -76,7 +79,7 @@ std::string Server::formattingRecivMsg(std::string clientBuff) {
  */
 void Server::handleSend() {
 
-    while (true)
+    while (running)
     {
         std::string msg;//
         msg = this->takeMsgFromQueue();//Взяли сообщение из очереди
@@ -170,5 +173,7 @@ void Server::pushToChat(std::string msg) {
 
 
 void Server::stop(){
+    running = false;
+    cv.notify_all();
     tcp.stop();
 }

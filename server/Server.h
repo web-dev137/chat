@@ -29,6 +29,7 @@ public:
 
 private:
     TCP tcp;//TCP сервер
+    volatile bool running = true;
     std::condition_variable cv;//Условная переменная для уведомления потока отправки сообщений чтоо очередь сообщений не пуста
     std::unordered_map<SOCKET,Client> cln_sockets;//Очередь соединений клиентов
     std::unordered_set<std::string> cln_names;//Очередь имён
