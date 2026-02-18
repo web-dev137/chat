@@ -29,7 +29,7 @@ void Client::sendMsg(std::string msg){
 }
 
 std::string Client::recvMsg(){
-    char buff[BUFF_SIZE];
+    char buff[1024];
     memset(buff, 0, sizeof(buff));
     int n=recv(clientSocket,buff,sizeof(buff),0);
     if(n<=0) {

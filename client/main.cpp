@@ -1,4 +1,4 @@
-#include "client.h"
+#include "Client.h"
 
 using namespace std;
 
@@ -13,7 +13,7 @@ int main(int argc,const char **argv) {
         return false;
     }
 
-    Client *c = new Client();
+    std::unique_ptr<Client> c = std::make_unique<Client>();
     
      if(argc != 2) {
         std::cerr<<"Name not given"<<endl;

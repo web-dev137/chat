@@ -40,10 +40,10 @@ void Server::handleRecive(int clientSocket,const std::string& buff) {
          */
         if(!this->checkClientName(clientName)) {
             this->sendClientError(errMsg,clientSocket);
-            closesocket(clientSocket);//Закрываем клиентский сокет
             return;
         };
         Client client = {clientName}; 
+        this->cln_names.insert(clientName);
         this->addClientToMap(clientSocket,client);
         this->pushToChat(this->formattingRecivMsg(buff));//Отправка сообщения в очередь
     } else {

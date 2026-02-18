@@ -1,7 +1,5 @@
 #include "TCP.h"
 
-using namespace std;
-
 TCP::TCP(int port) {
     serverAddress = {};
     inet_pton(AF_INET,"127.0.0.1",&serverAddress.sin_addr);
@@ -87,7 +85,7 @@ SOCKET TCP::handleAccept() {
 void TCP::listenOn() {
     if(listen(sock,5) == SOCKET_ERROR) {
         closesocket(sock);
-        throw runtime_error("Failed listening on socket");
+        throw std::runtime_error("Failed listening on socket");
     }
     
     std::cout<<"listening ok\n";
@@ -98,7 +96,7 @@ void TCP::listenOn() {
  */
 void TCP::recv(SOCKET clientSocket) {
     char buffer[1024] = { 0 };//Клиентский буфер
-    cout<<"we are in recv";
+  
     while(true){
         int n = ::recv(clientSocket ,buffer,sizeof(buffer),0); //Запись данных в буфер
 
@@ -111,7 +109,7 @@ void TCP::recv(SOCKET clientSocket) {
                 onDisconnect(clientSocket);
             }
             closesocket(clientSocket);
-            throw runtime_error("Failed reciv data");
+            throw std::runtime_error("Failed reciv data");
         }
         
         buffer[n] = '\0';
@@ -130,7 +128,7 @@ void TCP::recv(SOCKET clientSocket) {
  */
 void TCP::send(int connectionId,const void* data) {
     const char* buf = static_cast<const char*>(data); //приводим данные к типу необходимого для отправки
-    ::send(connectionId,buf,sizeof(buf),0); //отправка данных
+    ::send(connectionId,buf,strlen(buf),0); //отправка данных
 }
 
 /**

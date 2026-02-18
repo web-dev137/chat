@@ -1,5 +1,5 @@
-#ifndef __CLIENT_H__
-#define __CLIENT_H__
+#ifndef __SERVER_H__
+#define __SERVER_H__
 #include <iostream>
 #include <mutex>
 #include <thread>

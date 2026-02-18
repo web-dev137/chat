@@ -13,7 +13,6 @@ public:
     std::string formattingMsg(std::string name,std::string msg);
     std::string recvMsg();
     void close();
-    const int BUFF_SIZE=1024;
     std::mutex clientsMutex;
     const char* BASE_IP = "127.0.0.1";
 private:
