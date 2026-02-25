@@ -1,5 +1,5 @@
 #include "Client.h"
-
+#include <memory>
 using namespace std;
 
 std::string name;
