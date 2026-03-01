@@ -2,14 +2,14 @@
 
 Chat - a simple multi-threaded client-server chat system implemented in c++.
 The server uses a thread-per-client concurrency model with message queues and synchronization via mutex and condition_variable.
-It features an abstract transport layer, currently implemented over TCP sockets(reciv,send,connect,accept), separatting network handling from server logic.
-This project demonstrates understanding of low-level network programing, thread synchronization, and client-server architecture.
+It features an abstract transport layer, currently implemented over TCP sockets(reciv,send,connect,accept), separating network handling from server logic.
+This project demonstrates understanding of low-level network programming, thread synchronization, and client-server architecture.
 
 
 
 ## Concurrency model
 
-The server use a thread-per-client model.
+The server uses a thread-per-client model.
 A dedicated acceptor thread waits for new client connections.
 Each client connection spawns a worker thread that handles incoming data.
 When data is received (recv), a callback processes it and pushes the message to the server’s message queue.
@@ -33,7 +33,7 @@ cd build
 cmake -G "MinGW Makefiles" ..
 make
 ```
-You see in builde/client and builder/server executable files(client.exe and server.exe).
+You see in build/client and build/server executable files(client.exe and server.exe).
 
 ## Run
 
@@ -63,7 +63,7 @@ For connect client:
 ```text
 - Stress tests
 - Non-blocking I/O
-- Better concurency model
+- Better concurrency model
 ```
 
 
