@@ -5,23 +5,6 @@ The server uses a thread-per-client concurrency model with message queues and sy
 It features an abstract transport layer, currently implemented over TCP sockets(reciv,send,connect,accept), separating network handling from server logic.
 This project demonstrates understanding of low-level network programming, thread synchronization, and client-server architecture.
 
-
-
-## Concurrency model
-
-The server uses a thread-per-client model.
-A dedicated acceptor thread waits for new client connections.
-Each client connection spawns a worker thread that handles incoming data.
-When data is received (recv), a callback processes it and pushes the message to the server’s message queue.
-Sending messages is handled by taking items from the queue; if the queue is empty, the thread waits using condition_variable until a new message arrives.
-Shared resources, such as the message queue and the list of clients, are protected using mutex.
-This model works well for a small to medium number of clients. For larger loads, an event-driven or thread-pool-based architecture would be more scalable.
-
-## Transport abstraction
-The server features an abstract transport interface (ITransport), currently implemented with a TCP transport. This interface standardizes sending/receiving messages.
-This allows potential extension to other protocols (TCP, UDP, etc.), without changing server logic.
-
-
 ## Install
 
 In first you should clone project.
