@@ -56,9 +56,11 @@ For connect client:
 
 ## Example work
 
-[Alice]: Hi everyone!
-[Bob]: Hey, how are you?
-[Alice]: Doing well, thanks!
+[User1]: Hi everyone!
+
+[User2]: Hey, how are you?
+
+[User1]: Doing well, thanks!
 
 ## Planned
 ```text
