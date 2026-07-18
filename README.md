@@ -1,10 +1,36 @@
-## Chat on sockets
+# TCP Chat
 
-Chat - a simple multi-threaded client-server chat system implemented in c++.
-The server uses a thread-per-client concurrency model with message queues and synchronization via mutex and condition_variable.
-It features an abstract transport layer, currently implemented over TCP sockets(reciv,send,connect,accept), separating network handling from server logic.
-This project demonstrates understanding of low-level network programming, thread synchronization, and client-server architecture.
+A simple multi-threaded client-server chat implemented in modern C++17 using raw sockets.
 
+**Purpose of the project**: to deepen understanding of low-level network programming, thread synchronization, and client-server architecture.
+
+## Key Features
+- **Thread-per-client** concurrency model
+- Message queues with synchronization via `std::mutex` + `std::condition_variable`
+- Abstract transport layer (currently implemented over TCP sockets)
+- Graceful client disconnection handling
+- Simple text-based protocol
+
+## Tech Stack
+- C++17
+- STL (threads, mutexes, condition variables, queues)
+- TCP Sockets (POSIX / Winsock compatible)
+
+## Build
+
+```bash
+git clone https://github.com/web-dev137/tcp-chat.git
+cd tcp-chat
+
+mkdir build && cd build
+
+# Linux / macOS
+cmake -DCMAKE_BUILD_TYPE=Release ..
+make
+
+# Windows (MinGW)
+cmake -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release ..
+mingw32-make
 ## Install
 
 In first you should clone project.
@@ -30,17 +56,9 @@ For connect client:
 
 ## Example work
 
-```text
-[client1]: hi
-[client2]: hi
-[client1]: how are you?
-```
-## Features
-
-- Multi-threaded client-server architecture
-- Thread-per-client dispatcher with message queue
-- Abstract transport layer
-- Graceful client disconnect handling
+[Alice]: Hi everyone!
+[Bob]: Hey, how are you?
+[Alice]: Doing well, thanks!
 
 ## Planned
 ```text
