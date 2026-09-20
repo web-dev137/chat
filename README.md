@@ -14,7 +14,7 @@ A simple multi-threaded client-server chat implemented in modern C++17 using raw
 ## Tech Stack
 - C++17
 - STL (threads, mutexes, condition variables, queues)
-- TCP Sockets (POSIX / Winsock compatible)
+- TCP Sockets ( Winsock compatible)
 
 ## Build
 
